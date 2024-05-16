@@ -399,7 +399,7 @@ struct Proof<F: Field, PCSComm, PCSProof> {
 	trace_open_proof: PCSProof,
 }
 
-#[instrument]
+// #[instrument]
 #[allow(clippy::needless_range_loop)]
 fn generate_trace<P: PackedField + Pod>(log_size: usize) -> TraceWitness<P> {
 	let build_trace_column = || vec![P::default(); 1 << (log_size - P::LOG_WIDTH)];
@@ -508,7 +508,7 @@ fn generate_trace<P: PackedField + Pod>(log_size: usize) -> TraceWitness<P> {
 }
 
 #[allow(clippy::too_many_arguments)]
-#[instrument(skip_all)]
+// #[instrument(skip_all)]
 fn prove<P, F, PW, PCS, CH>(
 	log_size: usize,
 	oracles: &mut MultilinearOracleSet<F>,
@@ -639,7 +639,7 @@ where
 }
 
 #[allow(clippy::too_many_arguments)]
-#[instrument(skip_all)]
+// #[instrument(skip_all)]
 fn verify<P, F, PCS, CH>(
 	log_size: usize,
 	oracles: &mut MultilinearOracleSet<F>,

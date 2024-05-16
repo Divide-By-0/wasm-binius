@@ -224,7 +224,7 @@ where
 	(rd_claims, prove_output)
 }
 
-#[instrument(skip_all, name = "test_utils::full_prove_with_switchover")]
+// #[instrument(skip_all, name = "test_utils::full_prove_with_switchover")]
 pub fn full_prove_with_switchover<F, PW, CW, M, CH>(
 	claim: &SumcheckClaim<F>,
 	witness: SumcheckWitness<PW, CW, M>,
@@ -283,7 +283,7 @@ where
 	Ok((proof, evalcheck_claims))
 }
 
-#[instrument(skip_all, name = "test_utils::make_non_same_query_pcs_sumcheck_claims")]
+// #[instrument(skip_all, name = "test_utils::make_non_same_query_pcs_sumcheck_claims")]
 pub fn make_non_same_query_pcs_sumcheck_claims<'a, F: TowerField>(
 	verifier: &mut EvalcheckVerifier<'a, F>,
 	committed_eval_claims: &[CommittedEvalClaim<F>],
@@ -302,7 +302,7 @@ pub fn make_non_same_query_pcs_sumcheck_claims<'a, F: TowerField>(
 	Ok(claims)
 }
 
-#[instrument(skip_all, name = "test_utils::make_non_same_query_pcs_sumchecks")]
+// #[instrument(skip_all, name = "test_utils::make_non_same_query_pcs_sumchecks")]
 pub fn make_non_same_query_pcs_sumchecks<'a, 'b, F, PW>(
 	prover: &mut EvalcheckProver<'a, 'b, F, PW>,
 	committed_eval_claims: &[CommittedEvalClaim<F>],

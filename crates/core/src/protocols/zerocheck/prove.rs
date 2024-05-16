@@ -14,7 +14,7 @@ use binius_field::{Field, PackedField, TowerField};
 use tracing::instrument;
 
 /// Prove a zerocheck instance reduction.
-#[instrument(skip_all, name = "zerocheck::prove")]
+// #[instrument(skip_all, name = "zerocheck::prove")]
 pub fn prove<'a, F, PW, CW>(
 	zerocheck_claim: &ZerocheckClaim<F>,
 	zerocheck_witness: ZerocheckWitness<'a, PW, CW>,

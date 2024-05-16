@@ -10,8 +10,8 @@ crate-type = ["cdylib", "rlib"]
 [dependencies]
 anyhow.workspace = true
 wasm-bindgen = "0.2"
+web-sys = { version = "0.3", features = ["Performance", "Window", "console"] }
 console_error_panic_hook = { version = "0.1", optional = true }
-# examples = { path = "../examples" }
 binius_core = { path = "../crates/core" }
 binius_field = { path = "../crates/field" }
 binius_hash = { path = "../crates/hash" }

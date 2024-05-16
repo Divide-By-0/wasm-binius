@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WASM Proof System</title>
+    <script type="module">
+        import init, { run_keccak_example, main_js } from './pkg/wasm_keccak.js';
+
+        async function run() {
+            await init();
+            const startRunKeccakExample = Date.now();
+            run_keccak_example();
+            const endRunKeccakExample = Date.now();
+            console.log(`run_keccak_example took ${endRunKeccakExample - startRunKeccakExample} milliseconds`);
+
+            const startMainJs = Date.now();
+            main_js();
+            const endMainJs = Date.now();
+            console.log(`main_js took ${endMainJs - startMainJs} milliseconds`);
+        }
+
+        run();
+    </script>
+</head>
+<body>
+    <h1>Running Proof System in WASM</h1>
+</body>
+</html>

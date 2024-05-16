@@ -79,7 +79,7 @@ fn construct_merge_polynomial<F: Field>(
 /// Towers of Binary Fields paper in that we use the merge virtual
 /// polynomial instead of the interleave virtual polynomial. This is an
 /// optimization, and does not affect the soundness of prodcheck.
-#[instrument(skip_all, name = "prodcheck::prove")]
+// #[instrument(skip_all, name = "prodcheck::prove")]
 pub fn prove<'a, F: TowerField, FW: Field>(
 	oracles: &mut MultilinearOracleSet<F>,
 	witness_index: &mut MultilinearWitnessIndex<'a, FW>,

@@ -189,7 +189,7 @@ where
 	}
 
 	/// Generic parameters allow to pass a different witness type to the inner Evalcheck claim.
-	#[instrument(skip_all, name = "sumcheck::finalize")]
+	// #[instrument(skip_all, name = "sumcheck::finalize")]
 	pub fn finalize(mut self, prev_rd_challenge: Option<F>) -> Result<EvalcheckClaim<F>, Error> {
 		// First round has no challenge, other rounds should have it
 		self.validate_rd_challenge(prev_rd_challenge)?;
@@ -271,7 +271,7 @@ where
 		}
 	}
 
-	#[instrument(skip_all, name = "sumcheck::execute_round")]
+	// #[instrument(skip_all, name = "sumcheck::execute_round")]
 	pub fn execute_round(
 		&mut self,
 		prev_rd_challenge: Option<F>,

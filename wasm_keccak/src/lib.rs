@@ -2,6 +2,7 @@
 
 extern crate wasm_bindgen;
 use wasm_bindgen::prelude::*;
+use web_sys::window;
 use console_error_panic_hook;
 mod keccakf;
 

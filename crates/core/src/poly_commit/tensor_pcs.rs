@@ -190,7 +190,7 @@ where
 		self.log_rows() + self.log_cols()
 	}
 
-	#[instrument(skip_all, name = "tensor_pcs::commit")]
+	// #[instrument(skip_all, name = "tensor_pcs::commit")]
 	fn commit(
 		&self,
 		polys: &[MultilinearExtension<P>],
@@ -256,7 +256,7 @@ where
 	/// Precondition: The queried point must already be observed by the challenger.
 	///
 	/// [DP23]: https://eprint.iacr.org/2023/630
-	#[instrument(skip_all, name = "tensor_pcs::prove_evaluation")]
+	// #[instrument(skip_all, name = "tensor_pcs::prove_evaluation")]
 	fn prove_evaluation<CH>(
 		&self,
 		challenger: &mut CH,
@@ -331,7 +331,7 @@ where
 	/// Precondition: The queried point must already be observed by the challenger.
 	///
 	/// [DP23]: https://eprint.iacr.org/2023/630
-	#[instrument(skip_all, name = "tensor_pcs::verify_evaluation")]
+	// #[instrument(skip_all, name = "tensor_pcs::verify_evaluation")]
 	fn verify_evaluation<CH>(
 		&self,
 		challenger: &mut CH,
