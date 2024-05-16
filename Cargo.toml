@@ -1,7 +1,8 @@
 [workspace]
 members = [
     "crates/*",
-    "examples"
+    "examples",
+    "wasm_keccak"
 ]
 resolver = "2"
 
@@ -56,3 +57,7 @@ debug = true
 [profile.bench]
 inherits = "release"
 debug = true
+
+# [package]
+# name = "keccakf"
+# path = "examples/keccakf.rs"  # Only needed if this file is the root of your library

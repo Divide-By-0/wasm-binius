@@ -1,17 +1,22 @@
 [package]
-name = "examples"
-version.workspace = true
-edition.workspace = true
-authors.workspace = true
+name = "wasm_keccak"
+edition = "2021"
 
-[dev-dependencies]
+[lib]
+# crate-type = ["cdylib"]
+path = "src/lib.rs"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
 anyhow.workspace = true
 wasm-bindgen = "0.2"
-console_error_panic_hook = { version = "0.1" }
+console_error_panic_hook = { version = "0.1", optional = true }
+# examples = { path = "../examples" }
 binius_core = { path = "../crates/core" }
 binius_field = { path = "../crates/field" }
 binius_hash = { path = "../crates/hash" }
 binius_macros = { path = "../crates/macros"}
+getrandom = { version = "0.2.15", features = ["js"] }
 bytemuck.workspace = true
 p3-challenger.workspace = true
 rand.workspace = true
@@ -21,10 +26,8 @@ tracing-profile.workspace = true
 tracing-subscriber.workspace = true
 tracing.workspace = true
 
-[[example]]
-name = "bitwise_and_proof"
-path = "bitwise_and_proof.rs"
+# Add dependencies from your existing project
+# Ensure all dependencies are compatible with WASM
 
-# [[example]]
-# name = "keccakf"
-# path = "keccakf.rs"
+[features]
+default = ["console_error_panic_hook"]

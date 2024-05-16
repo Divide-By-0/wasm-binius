@@ -810,7 +810,7 @@ fn make_constraints<F: TowerField, FI: TowerField>(
 	Ok(mix)
 }
 
-fn main() {
+pub fn main() {
 	const SECURITY_BITS: usize = 100;
 
 	init_tracing();
