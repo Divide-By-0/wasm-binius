@@ -1,10 +1,41 @@
 ![Binius logo](doc/Logo.png "Binius logo")
 
+# Binius WASM Benchmark
+
+Two runs:
+
+run_keccak_example took 2209.515 seconds
+main_js took 401.211 seconds
+
+run_keccak_example took 384.138 seconds
+main_js took 376.547 seconds
+
+Locally, this executes on my 10 cores in about 15 seconds, which is pretty close to paper benchmarks. In the browser, there is a slowdown of about 20-150x, without any rayon bindgen wasm multithreading, which we can expect to at most make 8x better.
+
+I'm not entirely sure, but `log_size = 23` and the trace calculation code here: 
+```
+	// Each round state is 64 rows
+	// Each permutation is 24 round states
+	for perm_i in 0..1 << (log_size - 11) {
+		let i = perm_i << 5;
+
+		// Randomly generate the initial permutation input
+		let input: [u64; 25] = rng.gen();
+		let output = {
+			let mut output = input;
+			keccakf(&mut output);
+			output
+		};
+  ...
+```
+
+seems to imply to me that 1600 bits are getting hashed 4096 times. Compare this to 1024 bit keccak being about ~151K constraints in circom, which we expect to take about 5 seconds in the browser and under a second on an app. Let's say on average keccak takes 1000 seconds in the browser; so that's about 0.25 seconds per 1600 bits, making unparallelized binius around 8x faster than parallelized circom in the browser, even with no parallelization.
+
 # Binius
 
 Binius is a Rust library implementing a cryptographic *succinct non-interactive argument of knowledge* (SNARK) over towers of binary fields. The techniques are described formally in the paper *[Succinct Arguments over Towers of Binary Fields](https://eprint.iacr.org/2023/1784)*.
 
-This library is a work in progress. It is not yet ready for use, but may be of interest for experimentation. 
+This library is a work in progress. It is not yet ready for use, but may be of interest for experimentation.
 
 ## Usage
 
@@ -62,7 +93,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-       http://www.apache.org/licenses/LICENSE-2.0
+http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,

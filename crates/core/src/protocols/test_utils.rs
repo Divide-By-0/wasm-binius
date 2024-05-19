@@ -147,7 +147,7 @@ where
 	MultilinearExtension::from_values(values)
 }
 
-#[instrument(skip_all, name = "test_utils::full_verify")]
+// #[instrument(skip_all, name = "test_utils::full_verify")]
 pub fn full_verify<F, CH>(
 	claim: &SumcheckClaim<F>,
 	proof: SumcheckProof<F>,
@@ -224,7 +224,7 @@ where
 	(rd_claims, prove_output)
 }
 
-// #[instrument(skip_all, name = "test_utils::full_prove_with_switchover")]
+// #[instrument(skpip_all, name = "test_utils::full_prove_with_switchover")]
 pub fn full_prove_with_switchover<F, PW, CW, M, CH>(
 	claim: &SumcheckClaim<F>,
 	witness: SumcheckWitness<PW, CW, M>,
@@ -248,10 +248,10 @@ where
 	full_prove_with_switchover_impl(n_vars, prover_state, challenger)
 }
 
-#[instrument(
-	skip_all,
-	name = "test_utils::prove_bivariate_sumchecks_with_switchover"
-)]
+// #[instrument(
+// 	skip_all,
+// 	name = "test_utils::prove_bivariate_sumchecks_with_switchover"
+// )]
 pub fn prove_bivariate_sumchecks_with_switchover<'a, F, PW, CH>(
 	sumchecks: impl IntoIterator<Item = BivariateSumcheck<'a, F, PW>>,
 	challenger: &mut CH,
